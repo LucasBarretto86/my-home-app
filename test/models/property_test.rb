@@ -5,6 +5,7 @@ class PropertyTest < ActiveSupport::TestCase
     @property = properties(:lorem)
     @path = Rails.root.join("tmp/images")
   end
+
   test 'That property is valid' do
     assert Property.create(name: 'lorem')
   end
