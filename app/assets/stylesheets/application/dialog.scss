@@ -1,0 +1,58 @@
+.dialog {
+  &[open] {
+    &:before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 48px;
+    }
+  }
+
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 36px auto;
+    grid-row-gap: 16px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    bottom: 0;
+    width: 33vw;
+    height: 33vw;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    background: #FFF;
+    border-radius: 16px;
+    padding: 24px;
+
+    z-index: 100;
+  }
+
+  &-head {
+    display: grid;
+    grid-template-columns: 2fr 0.25fr;
+    grid-row: 1;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .dialog-close {
+      display: flex;
+      justify-content: flex-end;
+      grid-column: 2;
+    }
+  }
+
+  &-body {
+    grid-row: 2;
+  }
+}

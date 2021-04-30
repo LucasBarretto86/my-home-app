@@ -1,17 +1,25 @@
-<div>
-  <div>
+<header class="sticky-top d-flex align-items-center justify-content-between bg-white border-primary border-bottom py-3 px-4 mb-4 shadow">
+  <div class="d-flex align-items-center">
     <%= svg_inline "home" %>
+    <div class="ml-2">
+      <h1 class="h5 m-0"><span class="text-primary">MyHome</span><small class="text-secondary">, where your home might be!</small></h1>
+    </div>
   </div>
   <div>
-    <h1>MyHome, home from my new home!</h1>
-  </div>
-  <div>
-    <details>
-      <summary>About</summary>
-      <div>
-        <h2>Page author: Lucas Barretto e Silva</h2>
-        <p>Welcome everyone!</p>
+    <details class="dialog" data-controller="dialog">
+      <!-- TODO componetization and create dialog_controller-->
+      <summary class="btn btn-primary">About</summary>
+      <div class="dialog-container">
+        <div class="dialog-head">
+          <h2>Sobre</h2>
+          <div class="dialog-close"><%= svg_inline :cross %></div>
+        </div>
+        <div class="dialog-body">
+          <p>Welcome everyone!</p>
+          <p>Website developed as learning project.</p>
+          <small>&reg 2021 - Lucas Barretto</small>
+        </div>
       </div>
     </details>
   </div>
-</div>
+</header>
