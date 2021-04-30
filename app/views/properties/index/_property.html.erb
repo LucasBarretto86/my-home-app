@@ -1,5 +1,5 @@
 <div class="border rounded mb-4 p-0 m-3 shadow">
-  <%= image_tag property.cover, loading: "lazy", class: "w-100" %>
+  <%= image_tag property.cover.variant(resize: '256x256').processed, loading: "lazy", class: "w-100" %>
 
   <div class="d-flex flex-column align-items-end p-4">
     <h3 class="text-primary font-weight-bold w-100"><%= property.name %></h3>

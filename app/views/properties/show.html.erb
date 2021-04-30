@@ -1,23 +1,65 @@
 <style>
     .cover {
-        background-image: url("<%= @property.cover %>");
+        position: relative;
+        top: 0;
+        min-width: 100%;
+        height: 50vh;
+        margin-top: -32px;
+        background-image: url("<%= url_for @property.cover %>");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
     }
-</style>
-<div>
-  <div class="cover">
-  </div>
 
-  <div>
-    <h2><@property.name</h2>
+    .cover:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.0) 45%, rgba(0, 0, 0, 0.5) 100%);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+</style>
+<section class="cover"></section>
+
+<div class="container">
+  <section class="p-24 mt-4 mb-5">
+    <h2 class="h1 text-primary text-right mb-4 px-4"><u><%= @property.name %></u></h2>
+    <p class="text-secondary text-center mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad blanditiis debitis et explicabo id, illo magnam,
+      odit quasi quis quod sed sequi soluta sunt tenetur voluptatibus. Architecto enim repudiandae veniam?
+    </p>
+
+    <figure class="text-end mb-4">
+      <blockquote class="blockquote">
+        <blockquote class="blockquote text-primary text-right px-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
+      </blockquote>
+      <figcaption class="blockquote-footer px-4">
+        Architecto, <cite title="Source Title">Lorem</cite>
+      </figcaption>
+    </figure>
+
+    <p class="text-secondary text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, illum natus. Debitis earum,
+      error ex facere impedit laborum, nemo odio officiis quaerat quasi rerum sed temporibus veniam voluptatem voluptatibus. Deserunt. Lorem ipsum dolor sit amet,
+      consectetur adipisicing elit. A ad assumenda aut dolorem facilis iusto laudantium natus nemo nihil non numquam, odio pariatur perspiciatis quam quibusdam
+      reprehenderit tempora vel vitae.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="h1 text-primary text-right mb-4 px-4"><u>Gallery</u></h2>
     <div class="slider">
       <div class="stepper stepper--prev"></div>
       <div class="photos">
-        <% render partial: "properties/show/photo", collection: @properties.photos %>
+        <%= render partial: "properties/show/photo", collection: @property.photos %>
       </div>
       <div class="stepper stepper--next"></div>
     </div>
-  </div>
+  </section>
 </div>

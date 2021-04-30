@@ -8,8 +8,6 @@ class Property < ApplicationRecord
   def cover
     return nil unless photos.attached?
 
-    photo = photos.third || photos.first
-
-    photo.variant(resize: '256x256').processed
+    photos.third || photos.first
   end
 end
