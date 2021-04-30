@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+# Define local temp images path
+path = Rails.root.join("tmp/images")
+
+# iterate 50 times, each time instantiate properties variable,
+# set a Random Street name as name, then iterate through the path directory to
+# reach mocked pictures, do set it to shuffle it and attache to the photos collection
+
+50.times do
+  property = Property.new(name: Faker::Address.street_name)
+
+  Dir.children(path).shuffle.each do |file|
+    property.photos.attach(io: File.open([path, file].join('/')), filename: file)
+    property.save!
+  end
+end
