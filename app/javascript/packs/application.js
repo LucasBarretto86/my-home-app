@@ -6,17 +6,12 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
-import { Application } from 'stimulus'
 import "channels"
+
+import "./stimulus/config"
+import "./bootstrap/config"
+import "./bootstrap/bootstrap.scss"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-
-import { definitionsFromContext } from 'stimulus/webpack-helpers'
-
-const application = Application.start()
-
-const controllers = require.context('controllers', true, /_controller\.js$/)
-application.load(definitionsFromContext(controllers))
