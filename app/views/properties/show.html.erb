@@ -1,0 +1,23 @@
+<style>
+    .cover {
+        background-image: url("<%= @property.cover %>");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+<div>
+  <div class="cover">
+  </div>
+
+  <div>
+    <h2><@property.name</h2>
+    <div class="slider">
+      <div class="stepper stepper--prev"></div>
+      <div class="photos">
+        <% render partial: "properties/show/photo", collection: @properties.photos %>
+      </div>
+      <div class="stepper stepper--next"></div>
+    </div>
+  </div>
+</div>

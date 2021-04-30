@@ -1,0 +1,5 @@
+<div>
+  <%= image_tag property.cover, loading: "lazy" %>
+  <h3><%= property.name %></h3>
+  <%= link_to "More details", property_path(property), class: "btn btn--default" %>
+</div>
