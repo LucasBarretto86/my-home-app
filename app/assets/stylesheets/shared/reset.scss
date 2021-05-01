@@ -3,3 +3,9 @@ summary::marker {
   list-style: none !important;
   appearance: none;
 }
+
+header {
+  a:hover {
+    text-decoration: none;
+  }
+}

@@ -6,16 +6,16 @@
   <link rel="icon" href="/app/assets/images/ico/logo.ico">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= render "layouts/application/stylesheets" %>
+  <%#= stylesheet_link_tag 'shared', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%#= stylesheet_pack_tag 'shared', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
   <%= render "layouts/application/header" %>
-  <main>
-    <%= yield %>
-  </main>
+<main>
+  <%= yield %>
+</main>
 </body>
 </html>
