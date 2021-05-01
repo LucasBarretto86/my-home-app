@@ -1,25 +1,18 @@
 <header class="sticky-top d-flex align-items-center justify-content-between bg-white border-primary border-bottom py-3 px-4 mb-4 shadow">
-  <div class="d-flex align-items-center">
+  <a href="/" class="d-flex align-items-center">
     <%= svg_inline "home" %>
     <div class="ml-2">
       <h1 class="h5 m-0"><span class="text-primary">MyHome</span><small class="text-secondary">, where your home might be!</small></h1>
     </div>
-  </div>
+  </a>
+
   <div>
-    <details class="dialog" data-controller="dialog">
-      <!-- TODO componetization and create dialog_controller-->
-      <summary class="btn btn-primary">About</summary>
-      <div class="dialog-container">
-        <div class="dialog-head mb-2">
-          <h2 class="primary border-bottom border-primary">About</h2>
-          <div class="dialog-close"><%= svg_inline :cross %></div>
-        </div>
-        <div class="dialog-body p-2">
-          <p>Welcome everyone!</p>
-          <p>Website developed as a case project.</p>
-          <small>&reg 2021 - Lucas Barretto</small>
-        </div>
+    <%= render "layouts/application/dialog", title: "About" do %>
+      <div>
+        <p>Welcome everyone!</p>
+        <p>Website developed as a case project.</p>
+        <small>&reg 2021 - Lucas Barretto</small>
       </div>
-    </details>
+    <% end %>
   </div>
 </header>
