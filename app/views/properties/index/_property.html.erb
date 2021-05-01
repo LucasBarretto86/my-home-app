@@ -1,13 +1,3 @@
 <div id="<%= dom_id property %>" class="border rounded mb-4 p-0 m-3 shadow">
-  <%= image_tag property.cover.variant(resize: '256x256').processed, loading: "lazy", class: "w-100" unless property.cover.nil? %>
-
-  <div class="d-flex flex-column align-items-end p-4">
-    <h3 class="text-primary font-weight-bold w-100"><%= property.name %></h3>
-    <p class="text-secondary">
-      <%= truncate "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta eius et ex illum impedit itaque
-    nostrum odit quia totam ut? Aspernatur beatae deserunt ex excepturi incidunt nobis quidem quis tempore!", length: 64 %>
-    </p>
-
-    <%= link_to "More details", property_path(property), class: "btn btn-outline-primary" %>
-  </div>
+  <%= render "properties/index/content", property: property, sizes: '228x228' %>
 </div>
