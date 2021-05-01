@@ -1,7 +1,7 @@
 require 'faker'
 
 # Define local temp images path
-path = Rails.root.join("tmp/images")
+path = Rails.root.join('test/fixtures/files')
 
 # iterate 50 times, each time instantiate properties variable,
 # set a Random Street name as name, then iterate through the path directory to
