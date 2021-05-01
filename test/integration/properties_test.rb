@@ -6,6 +6,16 @@ class PropertiesTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
   include Rails.application.routes.url_helpers
 
+  setup do
+    @photos = [
+      fixture_file_upload('test/fixtures/files/1.jpg', 'image/jpg'),
+      fixture_file_upload('test/fixtures/files/2.jpg', 'image/jpg'),
+      fixture_file_upload('test/fixtures/files/3.jpg', 'image/jpg'),
+      fixture_file_upload('test/fixtures/files/4.jpg', 'image/jpg')
+    ]
+    @property = Property.create(name: "Lehner Glen", photos: @photos)
+  end
+
   test 'that layout has the correct page title' do
     get properties_path
 
@@ -15,6 +25,7 @@ class PropertiesTest < ActionDispatch::IntegrationTest
 
   test 'that header about button has the correct information' do
     get properties_path
+
     assert_select '.dialog' do
       assert_select 'summary', text: 'About'
       assert_match /#{svg_inline :cross}/, @response.body
@@ -27,30 +38,30 @@ class PropertiesTest < ActionDispatch::IntegrationTest
   test 'that on index cards have the correct property information' do
     get properties_path
 
-    assert_select 'h1', text: /MyHome, where your home might be!/
+    assert_select 'h3', text: 'Available Properties'
 
-    assert_select '#property_1' do
-      assert_select "a[href='#{property_path(properties(:property_1))}']"
-      assert_select 'img[src*="1.jpg"]'
+    assert_select "#property_#{@property.id}" do
+      assert_select "a[href='#{property_path(@property)}']"
+      assert_select 'img[src*="3.jpg"]'
       assert_select 'h3', text: 'Lehner Glen'
       assert_select 'p', text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dic...'
     end
   end
 
   test 'that on show a specific property data is displayed correctly' do
-    get property_path(properties(:property_3))
-
-    assert_select 'h1', text: /MyHome, where your home might be!/
+    get property_path(@property)
 
     assert_select 'style' do
-      assert_match /#{properties(:property_3).cover.blob.filename}/, @response.body
+      assert_match /background-image: url(.*\/3.jpg)/, @response.body
     end
 
     assert_select '.container' do
-      assert_select 'h2', text: 'Martin Cliffs'
+      assert_select 'h2', text: 'Lehner Glen'
+      assert_select 'article.property-description', text: /Lorem ipsum dolor sit amet, consectetur adipisicing elit/
+      assert_select 'article.property-highlight', text: /Ad adipisci, animi architecto assumenda earum ex fuga itaque/
 
-      assert_select ".slider" do
-        properties(:property_3).photos.blobs do |blob|
+      assert_select '.slider' do
+        @property.photos.blobs do |blob|
           assert_match /img[src*='#{blob.filename}']/, @response.body
         end
       end
