@@ -7,32 +7,16 @@
   <section class="p-24 mt-4 mb-5">
     <h2 class="h1 text-primary text-right mb-4 px-4"><u><%= @property.name %></u></h2>
     <article class="property-description">
-      <p class="text-secondary mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad blanditiis debitis et explicabo id, illo magnam,
-        odit quasi quis quod sed sequi soluta sunt tenetur voluptatibus. Architecto enim repudiandae veniam?
-      </p>
-      <p class="text-secondary">Deserunt. Lorem ipsum dolor sit amet,
-        consectetur adipisicing elit. A ad assumenda aut dolorem facilis iusto laudantium natus nemo nihil non numquam, odio pariatur perspiciatis quam quibusdam
-        reprehenderit tempora vel vitae.
-      </p>
+      <%= render "properties/show/description" %>
     </article>
+
     <article class="property-highlight">
-      <figure class="text-end mb-4">
-        <blockquote class="blockquote text-primary text-right px-4">Ad adipisci, animi architecto assumenda earum ex fuga itaque, libero molestiae quibusdam, saepe veritatis.</blockquote>
-        <figcaption class="blockquote-footer px-4">
-          Architecto, <cite title="Source Title">Lorem</cite>
-        </figcaption>
-      </figure>
+      <%= render "properties/show/highlight" %>
     </article>
   </section>
 
   <section>
     <h2 class="h1 text-primary text-right mb-4 px-4"><u>Gallery</u></h2>
-    <div class="slider">
-      <div class="stepper stepper--prev"></div>
-      <div class="photos">
-        <%= render partial: "properties/show/photo", collection: @property.photos unless @property.photos.nil? %>
-      </div>
-      <div class="stepper stepper--next"></div>
-    </div>
+    <%= render "properties/show/slider", property: @property %>
   </section>
 </div>

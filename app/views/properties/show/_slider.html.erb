@@ -1,0 +1,7 @@
+<div class="slider">
+  <div class="stepper stepper--prev"></div>
+  <div class="photos">
+    <%= render(partial: "properties/show/photo", collection: property.photos, cache: true) unless property.photos.nil? %>
+  </div>
+  <div class="stepper stepper--next"></div>
+</div>
