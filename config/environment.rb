@@ -1,5 +1,5 @@
-# Load the Rails shared.
+# Load the Rails application.
 require_relative "application"
 
-# Initialize the Rails shared.
+# Initialize the Rails application.
 Rails.application.initialize!
