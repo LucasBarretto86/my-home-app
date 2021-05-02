@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is basically a study case project using Ruby on Rails, Stimulus, Faker and Bootstrap
 
-Things you may want to cover:
+![image](https://user-images.githubusercontent.com/15917864/116802586-37ca3500-aaea-11eb-9ba1-b0ff3ace303b.png)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![image](https://user-images.githubusercontent.com/15917864/116802593-4add0500-aaea-11eb-954b-62f3d9654365.png)
