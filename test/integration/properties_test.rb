@@ -13,7 +13,7 @@ class PropertiesTest < ActionDispatch::IntegrationTest
       fixture_file_upload('test/fixtures/files/3.jpg', 'image/jpg'),
       fixture_file_upload('test/fixtures/files/4.jpg', 'image/jpg')
     ]
-    @property = Property.create(name: "Lehner Glen", photos: @photos)
+    @property = Property.create(name: 'Lehner Glen', photos: @photos)
   end
 
   test 'that layout has the correct page title' do

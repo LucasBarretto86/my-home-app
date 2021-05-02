@@ -1,0 +1,15 @@
+<details id="dialog-about" class="dialog" data-controller="dialog">
+  <summary class=" dialog__trigger btn btn-primary"><%= title %></summary>
+
+  <div class="dialog__container">
+    <div class="dialog__head">
+      <h3 class="primary border-bottom border-primary mb-0"><%= title %></h3>
+
+      <div class="dialog__close w-100 h-100" data-action="click->dialog#close"><%= svg_inline :cross %></div>
+    </div>
+
+    <div class="dialog__body">
+      <%= yield %>
+    </div>
+  </div>
+</details>

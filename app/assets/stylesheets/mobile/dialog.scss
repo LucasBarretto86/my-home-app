@@ -1,0 +1,51 @@
+.dialog {
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 36px auto;
+    grid-row-gap: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #FFF;
+    padding: 24px;
+
+    z-index: 100;
+  }
+
+  &__head {
+    display: grid;
+    grid-template-columns: 2fr 0.25fr;
+    grid-row: 1;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .dialog-close {
+      display: flex;
+      justify-content: flex-end;
+      grid-column: 2;
+    }
+  }
+
+  &__close {
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1001;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__body {
+    grid-row: 2;
+  }
+}
