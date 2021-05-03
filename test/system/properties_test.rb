@@ -9,7 +9,11 @@ class PropertiesTest < ApplicationSystemTestCase
   setup do
     @properties = 5.times.map do
       Property.create name: Faker::Address.street_name,
-                      photos: fixture_file_upload('test/fixtures/files/1.jpg', 'image/jpg')
+                      photos: [
+                        fixture_file_upload('test/fixtures/files/1.jpg', 'image/jpg'),
+                        fixture_file_upload('test/fixtures/files/2.jpg', 'image/jpg'),
+                        fixture_file_upload('test/fixtures/files/3.jpg', 'image/jpg')
+                      ]
     end
 
     @property = @properties.first
@@ -45,7 +49,7 @@ class PropertiesTest < ApplicationSystemTestCase
     assert_selector '.property', count: @properties.length
   end
 
-  test 'that on index by clicking on propertys more details button go to show property page' do
+  test 'that on index by clicking on more details button go to show property page' do
     visit properties_url
 
     assert_selector '#properties-index'
@@ -67,5 +71,24 @@ class PropertiesTest < ApplicationSystemTestCase
     end
 
     assert_selector '#properties-index'
+  end
+
+  test 'that on show slider works properly' do
+    visit property_url(@property)
+
+    assert_selector "#property_#{@property.id}-show"
+    assert_selector '.slider'
+
+    assert_selector 'div[data-current-index="1"]'
+    assert_selector 'div[data-total-indexes="3"]'
+    assert_no_selector '.slider__stepper--prev'
+    assert_selector '.slider__stepper--next'
+
+    2.times { find('.slider__stepper--next').click }
+
+    assert_selector 'div[data-current-index="3"]'
+    assert_selector 'div[data-total-indexes="3"]'
+    assert_no_selector '.slider__stepper--next'
+    assert_selector '.slider__stepper--prev'
   end
 end

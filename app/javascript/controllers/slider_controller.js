@@ -5,7 +5,7 @@ export default class extends Controller {
 
     // INITIALIZER
     connect() {
-        this._currentIndex = 0
+        this.currentIndex = 1
         this.totalIndexes = this.slidesCount
     }
 
@@ -28,7 +28,7 @@ export default class extends Controller {
     }
 
     hasStarted() {
-        return this.currentIndex > 0
+        return this.currentIndex > 1
     }
 
     hasEnded() {
@@ -47,7 +47,7 @@ export default class extends Controller {
     // GETTERS & SETTERS
 
     get currentIndex() {
-        return this._currentIndex
+        return Number(this.element.dataset.currentIndex)
     }
 
     get slideIndex() {
@@ -59,11 +59,10 @@ export default class extends Controller {
     }
 
     set currentIndex(value) {
-        this._currentIndex = value
-        this.element.dataset.currentIndex = this._currentIndex
+        this.element.dataset.currentIndex = value
     }
 
-    set totalIndexes(slidesCount) {
-        this.element.dataset.totalIndexes = slidesCount
+    set totalIndexes(value) {
+        this.element.dataset.totalIndexes = value
     }
 }

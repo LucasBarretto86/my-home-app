@@ -23,7 +23,7 @@ class PropertiesTest < ActionDispatch::IntegrationTest
     assert_select 'h1', text: /MyHome, where your home might be!/
   end
 
-  test 'that header about button has the correct information' do
+  test 'that header about button modal has the correct information' do
     get properties_path
 
     assert_select '.dialog' do
@@ -35,7 +35,7 @@ class PropertiesTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'that on index cards have the correct property information' do
+  test 'that index displays card correct property information' do
     get properties_path
 
     assert_select 'h3', text: 'Available Properties'
@@ -48,23 +48,35 @@ class PropertiesTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'that on show a specific property data is displayed correctly' do
+  test 'that show displays correct data for each section' do
     get property_path(@property)
 
     assert_select 'style' do
       assert_match /background-image: url(.*\/3.jpg)/, @response.body
     end
 
-    assert_select '.container' do
+    assert_select '#property-info' do
       assert_select 'h2', text: 'Lehner Glen'
-      assert_select 'article.property-description', text: /Lorem ipsum dolor sit amet, consectetur adipisicing elit/
-      assert_select 'article.property-highlight', text: /Ad adipisci, animi architecto assumenda earum ex fuga itaque/
+      assert_select '#property-description', text: /Lorem ipsum dolor sit amet, consectetur adipisicing elit/
+      assert_select '#property-highlight', text: /Ad adipisci, animi architecto assumenda earum ex fuga itaque/
+    end
 
+    assert_select '#property-gallery' do
+      assert_select 'h2', text: 'Gallery'
       assert_select '.slider' do
         @property.photos.blobs do |blob|
           assert_match /img[src*='#{blob.filename}']/, @response.body
         end
       end
     end
+  end
+
+  test 'that show does not display gallery section if property has no photos' do
+    @property.photos.attachments.each(&:destroy)
+    @property.reload
+
+    get property_path(@property)
+
+    assert_select '#property-gallery', count: 0
   end
 end
