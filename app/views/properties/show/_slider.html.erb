@@ -1,7 +1,15 @@
-<div class="slider">
-  <div class="stepper stepper--prev"></div>
-  <div class="photos">
-    <%= render(partial: "properties/show/photo", collection: property.photos, cache: true) unless property.photos.nil? %>
+<div class="slider" data-controller="slider" data-current-index="0">
+  <div class="slider__stepper slider__stepper--prev hidden" data-slider-target="previous" data-action="click->slider#prev">
+    <%= svg_inline "chevron-left" %>
   </div>
-  <div class="stepper stepper--next"></div>
+  <div class="slider__slides" data-slider-target="slides">
+    <div class="slider__frame photos">
+      <% property.photos.each_with_index do |photo, index| %>
+        <%= render partial: "properties/show/slide", locals: { photo: photo, index: index }, cache: true %>
+      <% end %>
+    </div>
+  </div>
+  <div class="slider__stepper slider__stepper--next" data-slider-target="next" data-action="click->slider#next">
+    <%= svg_inline "chevron-right" %>
+  </div>
 </div>

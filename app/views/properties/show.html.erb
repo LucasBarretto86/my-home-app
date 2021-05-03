@@ -1,6 +1,6 @@
 <%= render "properties/show/style", property: @property %>
 
-<section class="cover"></section>
+<section class="cover container-fluid p-0 w-100"></section>
 
 <div id="<%= dom_id @property %>-show" class="container">
   <section class="p-24 mt-4 mb-5">
@@ -16,6 +16,6 @@
 
   <section>
     <h2 class="h1 text-primary text-right mb-4 px-4"><u>Gallery</u></h2>
-    <%= render "properties/show/slider", property: @property %>
+    <%= render "properties/show/slider", property: @property unless @property.photos.nil? %>
   </section>
 </div>
